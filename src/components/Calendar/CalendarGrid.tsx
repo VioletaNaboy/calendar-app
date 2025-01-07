@@ -1,27 +1,29 @@
-import { useState } from "react";
 import { Calendar, DayName, Day } from "./StyledCalendar";
-import { getDays } from "../../utils/getDays";
+import { useCalendar } from "../../hooks/useCalendar";
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const CalendarGrid = () => {
-    const [currentDate, setCurrentDate] = useState(new Date());
-    //const [currentMonth, setCurrentMonth] = useState(today.getMonth());
-    //const [currentYear, setCurrentYear] = useState(today.getFullYear());
-    const daysInCalendar = getDays(currentDate, 35)
+    const { days, currentMonth, setNextGrid, setPrevGrid } = useCalendar(new Date(), 35)
+
 
     return (
-        <Calendar>
-            {daysOfWeek.map((day) => (
-                <DayName key={day}>{day}</DayName>
-            ))}
+        <div>
+            <div>{currentMonth}</div>
+            <Calendar>
+                {daysOfWeek.map((day) => (
+                    <DayName key={day}>{day}</DayName>
+                ))}
 
 
-            {daysInCalendar.map((day, index) => (
-                <Day key={index} className={day.toDateString() === currentDate.toDateString() ? "active" : ""}>
-                    {day.toDateString()}
-                </Day>
-            ))}
-        </Calendar>
+                {days.map((day, index) => (
+                    <Day key={index} className={day.toDateString() === new Date().toDateString() ? "active" : ""}>
+                        {day.toDateString()}
+                    </Day>
+                ))}
+            </Calendar>
+            <button type="button" onClick={setPrevGrid}>Prev</button>
+            <button type="button" onClick={setNextGrid}>Next</button>
+        </div>
     );
 };
 

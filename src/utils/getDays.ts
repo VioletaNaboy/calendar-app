@@ -12,9 +12,7 @@ export const getDays = (date: Date, length: number) => {
         days.push(new Date(currentDate));
         currentDate.setDate(currentDate.getDate() + 1);
     }
-
-    return days;
-
+    return { days, firstDay, lastDay };
 };
 
 
