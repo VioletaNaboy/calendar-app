@@ -1,5 +1,9 @@
+import { StyledHeader, StyledInput, StyledButton } from "./StyledHeader"
 export const Header = () => {
     return (
-        <header>Calendar</header>
+        <StyledHeader>
+            <StyledInput placeholder="Search for task..." />
+            <StyledButton>Add task</StyledButton>
+        </StyledHeader>
     )
 }
