@@ -1,16 +1,17 @@
 import { tags } from "../utils/variables";
 
 export interface TaskProps {
+    id: string;
     tagsArray: (keyof typeof tags)[];
     descr: string;
+    date: string;
 }
 
 export interface TaskType {
     id: string;
     description: string;
-    tagsArray: (keyof typeof tags)[];
+    tagsArray: (keyof typeof tags)[] | [];
     date: string;
-    completed?: boolean;
 }
 
 export interface HolidayType {

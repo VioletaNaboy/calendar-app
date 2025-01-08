@@ -20,10 +20,9 @@ export const sizes = {
 
 export const tags = {
     holiday: '#a600ff',
-    work: '#6e00',
+    work: '#0b6e4f',
     home: '#6bff',
     family: '#ff9500',
     private: '#ce0013',
-
 }
 

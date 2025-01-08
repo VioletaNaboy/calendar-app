@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { colors, sizes, tags } from '../../utils/variables'
 
-interface TagProps {
+export interface TagProps {
     tag: keyof typeof tags;
+    isActive?: boolean;
 }
 
 export const TaskEl = styled.div`
@@ -13,11 +14,25 @@ overflow: hidden;
 text-overflow: ellipsis;
 max-width: 100%;
 flex-shrink: 0;
+&:focus{
+border: 1px solid ${colors.accent};
+}
 `
 
 export const Tag = styled.div<TagProps>`
   width: 18%;
-  background-color: ${(props): string => tags[props.tag]};
-  height: 5px;
-  border-radius: 12%;
+  background-color: ${(props): string => props.isActive ? tags[props.tag] : 'grey'};
+  height: 7px;
+  border-radius: 16%;
+
 `;
+
+export const InputTask = styled.textarea`
+max-width:100%;
+width:90%;
+border: none;
+resize: none;
+font-family: inherit;
+&:focus {
+  outline: none; }
+`

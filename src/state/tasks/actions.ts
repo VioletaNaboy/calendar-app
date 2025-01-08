@@ -34,9 +34,8 @@ export const fetchTasks = createAsyncThunk<TaskType[], void>(
             ...nextHolidays,
             ...worldwideHolidays,
         ];
-        ///const holidays: HolidayType[] = await holidaysResponse.json();
         const holidayTasks: TaskType[] = combinedHolidays.map((holiday) => ({
-            id: `holiday-${holiday.date}`,
+            id: holiday.localName,
             description: holiday.name,
             date: holiday.date,
             tagsArray: ['holiday'],

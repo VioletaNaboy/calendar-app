@@ -34,6 +34,7 @@ export const DayName = styled.div`
 `;
 
 export const Day = styled.div`
+position: relative;
   text-align: left;
   max-width:100%;
   font-size: ${sizes.sDesk};
@@ -59,8 +60,20 @@ margin-right: ${sizes.sDesk};
 &:hover {
 background-color: ${colors.backgroundAccent};
 }
-
 `
+export const PlusBtn = styled.button`
+position:absolute;
+top: 2%;
+right:2%;
+background-color: ${colors.accent};
+width: 20px;
+height: 20px;
+padding: 1px 0.5px 1px 1px;
+border-radius: 50%;
+&:hover {
+background-color: ${colors.backgroundAccent};
+}`
+
 export const Text = styled.div`
 font-size: ${sizes.lDesk};
 font-weight: 600;
@@ -68,11 +81,12 @@ color: ${colors.text};
 `
 
 export const TaskWrapper = styled.div`
-  width: 100%; 
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  `
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+gap: 4px;
+overflow-x: hidden;
+overflow-y: auto;
+margin-top: 4px;
+`
