@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, sizes } from "../../utils/styles";
+import { colors, sizes } from "../../utils/variables";
 
 interface CalendarProps {
   size: number;
@@ -59,6 +59,7 @@ margin-right: ${sizes.sDesk};
 &:hover {
 background-color: ${colors.backgroundAccent};
 }
+
 `
 export const Text = styled.div`
 font-size: ${sizes.lDesk};

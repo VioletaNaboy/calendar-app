@@ -1,19 +1,17 @@
 import styled from "styled-components";
-import { colors, sizes, tags } from '../../utils/styles'
+import { colors, sizes, tags } from '../../utils/variables'
 
 interface TagProps {
     tag: keyof typeof tags;
 }
 
 export const TaskEl = styled.div`
-width: 100%;
 padding: ${sizes.sDesk};
 background-color: ${colors.light};
 border-radius: ${sizes.sDesk};
-max-width: 100%;
 overflow: hidden; 
 text-overflow: ellipsis;
-max-width: 88%;
+max-width: 100%;
 flex-shrink: 0;
 `
 

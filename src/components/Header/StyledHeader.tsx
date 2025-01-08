@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, sizes } from '../../utils/styles'
+import { colors, sizes } from '../../utils/variables'
 
 export const StyledHeader = styled.header`
 width: 100%;

@@ -1,20 +1,18 @@
-import { Calendar, DayName, Day, Button, Text, TaskWrapper } from "./StyledCalendar";
-import { Task } from "../Task/Task";
+import { Calendar, DayName, Button, Text } from "./StyledCalendar";
+import { CalendarCell } from "./CalendarCell";
 import { useState } from "react";
 import { useCalendar } from "../../hooks/useCalendar";
-import { TaskProps } from "../Task/Task";
+
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTH = 35
 const WEEK = 7
 
-const testTask: TaskProps = {
-    "descr": "Jgbc sdjfhasjhdjiwhiufehfihdsjbcjbfjhbajdsjkdsadsadjbajsadgsahgdjahgdihwgdjhabjdhbgasjhfgsajhhf",
-    "tagsArray": ['family', 'private']
-}
 
 const CalendarGrid = () => {
+
     const [size, setSize] = useState(MONTH)
     const { days, currentMonth, setNextGrid, setPrevGrid } = useCalendar(new Date(), size)
+
 
     return (
         <>
@@ -37,13 +35,8 @@ const CalendarGrid = () => {
                 ))}
 
 
-                {days.map((day, index) => (
-                    <Day key={index} className={day.toDateString() === new Date().toDateString() ? "active" : ""}>
-                        {day.toDateString()}
-                        <TaskWrapper>
-                            <Task descr={testTask.descr} tagsArray={testTask.tagsArray} />
-                        </TaskWrapper>
-                    </Day>
+                {days.map((day) => (
+                    <CalendarCell key={day.toDateString()} day={day} />
                 ))}
             </Calendar>
         </>

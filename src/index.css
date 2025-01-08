@@ -2,13 +2,14 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  box-sizing: border-box;
+
   background: rgb(192, 193, 192);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: aliceblue;
 }
 
 
@@ -26,9 +27,7 @@ body {
   margin: 0;
   place-items: center;
   min-width: 320px;
-  min-height: 90vh;
-  max-height: 100%;
-  color: aliceblue;
+  min-height: 100vh;
 }
 
 h1 {
@@ -43,7 +42,7 @@ button {
   font-size: 1em;
   font-weight: 600;
   font-family: inherit;
-  color: inherit;
   cursor: pointer;
-  transition: background-color 0.25s;
+  color: white;
+  transition: border-color 0.25s;
 }
