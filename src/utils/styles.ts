@@ -1,5 +1,6 @@
 export const colors = {
     text: '#302b2a',
+    light: '#fff',
     backgroundLight: `background: rgb(213,231,220);
 background: linear-gradient(90deg, rgba(213,231,220,0.9486388305322129) 0%, rgba(226,233,228,0.7805716036414566) 50%, rgba(215,228,219,0.8029805672268908) 100%);`,
     backgroundDark: `background: rgb(199,207,202);
@@ -8,12 +9,21 @@ background: linear-gradient(90deg, rgba(199,207,202,0.9486388305322129) 0%, rgba
     backgroundAccent: '#96301a'
 };
 export const sizes = {
-    'sDesk': '12px',
-    'sMob': '8px',
-    'mDesk': '16px',
-    'mMob': '14px',
-    'lDesk': '32px',
-    'lMob': '24px',
-    'borderRadius': '8px'
+    sDesk: '12px',
+    sMob: '8px',
+    mDesk: '16px',
+    mMob: '14px',
+    lDesk: '32px',
+    lMob: '24px',
+    borderRadius: '8px'
+}
+
+export const tags = {
+    holiday: '#a600ff',
+    work: '#6e00',
+    home: '#6bff',
+    family: '#ff9500',
+    private: '#ce0013',
+
 }
 

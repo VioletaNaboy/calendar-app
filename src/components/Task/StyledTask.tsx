@@ -1,0 +1,25 @@
+import styled from "styled-components";
+import { colors, sizes, tags } from '../../utils/styles'
+
+interface TagProps {
+    tag: keyof typeof tags;
+}
+
+export const TaskEl = styled.div`
+width: 100%;
+padding: ${sizes.sDesk};
+background-color: ${colors.light};
+border-radius: ${sizes.sDesk};
+max-width: 100%;
+overflow: hidden; 
+text-overflow: ellipsis;
+max-width: 88%;
+flex-shrink: 0;
+`
+
+export const Tag = styled.div<TagProps>`
+  width: 18%;
+  background-color: ${(props): string => tags[props.tag]};
+  height: 5px;
+  border-radius: 12%;
+`;
