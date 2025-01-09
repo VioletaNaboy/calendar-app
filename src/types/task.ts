@@ -11,7 +11,7 @@ export interface TaskProps {
 export interface TaskType {
     id: string;
     description: string;
-    tagsArray: (keyof typeof tags)[] | [];
+    tagsArray: (keyof typeof tags)[];
     date: string;
 }
 

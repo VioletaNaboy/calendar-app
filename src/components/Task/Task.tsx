@@ -75,9 +75,10 @@ export const Task: React.FC<TaskProps> = ({ tagsArray, descr, id, date, currentD
                             />)}
                     </Wrapper>
                     <InputTask id={`input-${id}`} value={currentDescr}
-                        onChange={(e) => handleChange(e)}
-                        rows={3} />
-                    <DeleteBtn type="button" onClick={() => handleDeleteClick()}>Delete</DeleteBtn>
+                        onChange={handleChange}
+                        rows={3}
+                        placeholder="Describe a task" />
+                    <DeleteBtn type="button" onClick={handleDeleteClick}>Delete</DeleteBtn>
                 </>
             ) : (
                 <>

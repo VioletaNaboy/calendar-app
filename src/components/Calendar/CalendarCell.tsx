@@ -4,7 +4,7 @@ import { Day, TaskWrapper, PlusBtn } from "./StyledCalendar"
 import { Task } from "../Task/Task"
 import { TaskType } from "../../types/task"
 import { getTasksByDate } from "../../utils/getTasksByDate";
-import { selectTasks } from "../../state/tasks/tasksSlice";
+import { selectTasks, selectFilteredTasks } from "../../state/tasks/tasksSlice";
 import { normalizeDate } from "../../utils/getDays";
 
 interface CalendarCellProps {
@@ -12,7 +12,8 @@ interface CalendarCellProps {
 }
 
 export const CalendarCell: React.FC<CalendarCellProps> = ({ day }) => {
-    const { items, status, error } = useAppSelector(selectTasks);
+    const { status, error } = useAppSelector(selectTasks);
+    const items = useAppSelector(selectFilteredTasks);
     const [filteredTasks, setFilteredTasks] = useState<TaskType[]>([]);
 
     useEffect(() => {

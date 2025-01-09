@@ -60,6 +60,19 @@ export const { addTask, removeTask, updateTask } = tasksSlice.actions;
 
 export const selectTasks = (state: RootState) => state.tasks;
 
+export const selectFilteredTasks = (state: RootState) => {
+    const { search, tags: filterTags } = state.filter;
+    const tasks = state.tasks.items;
+
+    return tasks.filter((task) => {
+        const matchesSearch = task.description.toLowerCase().includes(search.toLowerCase());
+
+        const matchesTags = filterTags.some(tag => task.tagsArray.includes(tag));
+
+        return matchesSearch && matchesTags;
+    });
+};
+
 
 
 export default tasksSlice.reducer;
