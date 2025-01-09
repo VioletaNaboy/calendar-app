@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+# Calendar Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A calendar-based task management application built with React, Redux Toolkit, and custom hooks. This app focuses on a clean and intuitive user experience with powerful functionalities.
 
-Currently, two official plugins are available:
+![Calendar](assets/calendar-screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Calendar Functionality
+- **Custom Calendar Hook (`useCalendar`)**: The calendar is implemented without any external libraries, providing full control and customization of its behavior.
+- **Worldwide Holidays Display**: Each calendar cell (day) shows worldwide holidays at the top. Holiday names are fixed and do not drag and drop.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Task Management
+- **CRUD Operations**: Tasks can be created, read, updated, and deleted efficiently using Redux Toolkit for state management.
+- **Inline Task Editing**: Edit task descriptions and tags directly by clicking on a task. Changes are automatically saved when the cursor moves away from the task.
+- **Drag and Drop (`useDragAndDrop`)**:
+  - Reassign tasks between days (calendar cells) by dragging and dropping.
+  - Reorder tasks within a single cell using drag and drop.
+- **Colored Tags and Filtering**:
+  - Assign colored tags to tasks for better organization.
+  - Filter tasks in the calendar using a search bar.
 
-- Configure the top-level `parserOptions` property like this:
+## Checklist of Functionalities
+- [x] Create and edit tasks inside calendar cells (days) in an inline manner.
+- [x] Reassign tasks between days (calendar cells) using drag and drop.
+- [x] Reorder tasks in one cell using drag and drop.
+- [x] Filter tasks in the calendar by searching text.
+- [x] Show worldwide holidays (upcoming 7 days) and your local holidays (entire year) for each day in the calendar.
+- [x] Holiday names are fixed.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Technologies Used
+- **React**: For building the user interface.
+- **Redux Toolkit**: For state management and CRUD operations.
+- **TypeScript**: For type safety and better code maintainability.
+- **Custom Hooks**: 
+  - `useCalendar` for rendering the calendar.
+  - `useDragAndDrop` for handling task drag-and-drop functionality.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/calendar-task-manager.git

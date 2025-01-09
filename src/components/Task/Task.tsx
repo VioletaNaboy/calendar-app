@@ -76,7 +76,7 @@ export const Task: React.FC<TaskProps> = ({ tagsArray, descr, id, date, currentD
 
             {isEditing && !isNaN(Number(id)) ? (
                 <>
-                    <Wrapper>
+                    <Wrapper style={{ justifyContent: 'start' }}>
                         {Object.keys(tags).map((t) =>
                             <Tag key={t}
                                 tag={t as keyof typeof tags}
@@ -92,7 +92,7 @@ export const Task: React.FC<TaskProps> = ({ tagsArray, descr, id, date, currentD
                 </>
             ) : (
                 <>
-                    <Wrapper>
+                    <Wrapper style={{ justifyContent: 'start' }}>
                         {tagsArray.map((t) => <Tag key={t} tag={t as keyof typeof tags} isActive={true} />)}
                     </Wrapper>
                     <span style={{

@@ -1,4 +1,5 @@
 import { Calendar, DayName, Button, Text } from "./StyledCalendar";
+import { Wrapper } from "../Task/StyledTask";
 import { CalendarCell } from "./CalendarCell";
 import { useState } from "react";
 import { useCalendar } from "../../hooks/useCalendar";
@@ -16,17 +17,17 @@ const CalendarGrid = () => {
 
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                <div>
+            <Wrapper style={{ width: '90vw', margin: '0 auto' }}>
+                <Wrapper>
                     <Button type="button" onClick={setPrevGrid}>Prev</Button>
                     <Button type="button" onClick={setNextGrid}>Next</Button>
-                </div>
+                </Wrapper>
                 <Text>{currentMonth}</Text>
-                <div>
+                <Wrapper>
                     <Button type="button" disabled={size === WEEK} onClick={() => setSize(WEEK)}>WEEK</Button>
                     <Button type="button" disabled={size === MONTH} onClick={() => setSize(MONTH)}>MONTH</Button>
-                </div>
-            </div >
+                </Wrapper>
+            </Wrapper >
             <Calendar size={size}>
                 {daysOfWeek.map((day) => (
                     <DayName key={day}>

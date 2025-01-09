@@ -19,7 +19,7 @@ export const Calendar = styled.div<CalendarProps>`
 `;
 
 export const DayName = styled.div`
-  font-size: ${sizes.mDesk};
+  font-size: 0.7em;
   max-width:100%;
   text-align: left;
   font-weight: bold;
@@ -37,7 +37,7 @@ export const Day = styled.div`
 position: relative;
   text-align: left;
   max-width:100%;
-  font-size: ${sizes.sDesk};
+  font-size: 0.8em;
   padding: 8px;
   border-radius: ${sizes.borderRadius};
   border: 1px solid #ddd;
@@ -58,16 +58,14 @@ position: relative;
 
 export const Button = styled.button`
 background-color: ${colors.accent};
-margin-right: ${sizes.sDesk};
-
 &:hover {
 background-color: ${colors.backgroundAccent};
 }
 `
 export const PlusBtn = styled.button`
 position:absolute;
-top: 2px;
-right:4px;
+top: 0;
+right:0;
 color: ${colors.accent};
 background-color:transparent;
 width: 20px;
@@ -81,9 +79,10 @@ color: ${colors.backgroundAccent};
 }`
 
 export const Text = styled.div`
-font-size: ${sizes.lDesk};
+font-size: ${sizes.mDesk};
 font-weight: 600;
 color: ${colors.text};
+max-width: 50%;
 `
 
 export const TaskWrapper = styled.div`

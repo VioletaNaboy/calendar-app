@@ -10,11 +10,9 @@ background: linear-gradient(90deg, rgba(199,207,202,0.9486388305322129) 0%, rgba
     backgroundAccent: '#96301a'
 };
 export const sizes = {
-    sDesk: '12px',
-    sMob: '8px',
-    mDesk: '16px',
-    mMob: '14px',
-    lDesk: '32px',
+    sDesk: '1rem',
+    mDesk: '1.1rem',
+    lDesk: '2rem',
     lMob: '24px',
     borderRadius: '8px'
 }

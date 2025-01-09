@@ -18,7 +18,7 @@ export const Header = () => {
     return (
         <StyledHeader>
             <StyledInput value={search} placeholder="Search for task..." onChange={handleSearchChange} />
-            <Wrapper style={{ gap: '8px' }}>
+            <Wrapper style={{ gap: '0.5rem', marginTop: '0.5rem' }}>
                 {Object.keys(tags).map((tag) => (
                     <TagBtn
                         key={tag}
