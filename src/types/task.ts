@@ -6,6 +6,7 @@ export interface TaskProps {
     descr: string;
     date: string;
     currentDay: Date;
+    index: number;
 }
 
 export interface TaskType {

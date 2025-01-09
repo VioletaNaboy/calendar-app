@@ -16,6 +16,8 @@ const initialState: TasksState = {
     error: null,
 };
 
+
+
 export const tasksSlice = createSlice({
     name: 'tasks',
     initialState,
@@ -30,6 +32,27 @@ export const tasksSlice = createSlice({
             const index = state.items.findIndex(task => task.id === action.payload.id);
             if (index !== -1) {
                 state.items[index] = action.payload;
+            }
+        },
+        updateTaskDate: (state, action: PayloadAction<{ id: string, date: string }>) => {
+            const index = state.items.findIndex(task => task.id === action.payload.id);
+            if (index !== -1) {
+                state.items[index].date = action.payload.date;
+            }
+        },
+        reorderTasks: (state, action: PayloadAction<{ id: string, sourceIndex: number, targetIndex: number }>) => {
+            const { sourceIndex, targetIndex } = action.payload;
+            const task = state.items.find(task => task.id === action.payload.id);
+            if (!task) return;
+            const dayTasks = state.items.filter(t => t.date === task.date);
+
+            if (sourceIndex !== targetIndex) {
+                const [movedTask] = dayTasks.splice(sourceIndex, 1);
+                dayTasks.splice(targetIndex, 0, movedTask);
+
+                state.items = state.items
+                    .filter(task => task.date !== movedTask.date)
+                    .concat(dayTasks);
             }
         },
     },
@@ -56,7 +79,7 @@ export const tasksSlice = createSlice({
 });
 
 
-export const { addTask, removeTask, updateTask } = tasksSlice.actions;
+export const { addTask, removeTask, updateTask, updateTaskDate, reorderTasks } = tasksSlice.actions;
 
 export const selectTasks = (state: RootState) => state.tasks;
 

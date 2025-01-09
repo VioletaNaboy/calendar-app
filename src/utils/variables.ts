@@ -1,6 +1,7 @@
 export const colors = {
     text: '#302b2a',
     light: '#fff',
+    dark: '#3b3c3c',
     backgroundLight: `background: rgb(213,231,220);
 background: linear-gradient(90deg, rgba(213,231,220,0.9486388305322129) 0%, rgba(226,233,228,0.7805716036414566) 50%, rgba(215,228,219,0.8029805672268908) 100%);`,
     backgroundDark: `background: rgb(199,207,202);

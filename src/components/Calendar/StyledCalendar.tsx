@@ -50,6 +50,9 @@ position: relative;
     color:${colors.accent}; ;
     font-weight: bold;
   }
+    &.passed {
+    background-color: ${colors.dark};
+    }
 
 `;
 
@@ -63,15 +66,18 @@ background-color: ${colors.backgroundAccent};
 `
 export const PlusBtn = styled.button`
 position:absolute;
-top: 2%;
-right:2%;
-background-color: ${colors.accent};
+top: 2px;
+right:4px;
+color: ${colors.accent};
+background-color:transparent;
 width: 20px;
 height: 20px;
-padding: 1px 0.5px 1px 1px;
+padding: 2px;
 border-radius: 50%;
+font-weight:900;
+font-size: 18px;
 &:hover {
-background-color: ${colors.backgroundAccent};
+color: ${colors.backgroundAccent};
 }`
 
 export const Text = styled.div`
