@@ -5,6 +5,7 @@ export interface TaskProps {
     tagsArray: (keyof typeof tags)[];
     descr: string;
     date: string;
+    currentDay: Date;
 }
 
 export interface TaskType {

@@ -17,11 +17,3 @@ color: ${colors.text};
 font-weight:700;
 width: 50vw;
 `
-export const StyledButton = styled.button`
-background-color: ${colors.text};;
-margin: ${sizes.sDesk};
-
-&:hover {
-background-color: ${colors.backgroundAccent};
-}
-`

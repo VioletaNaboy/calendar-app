@@ -1,54 +1,50 @@
 import { useState } from "react";
-import { TaskEl, Tag, InputTask } from "./StyledTask"
+import { TaskEl, Tag, InputTask, DeleteBtn, Wrapper } from "./StyledTask"
 import { TaskProps } from "../../types/task";
 import { tags } from "../../utils/variables";
 import { useAppDispatch } from "../../state/hooks";
-import { updateTask, addTask } from "../../state/tasks/tasksSlice";
+import { updateTask, addTask, removeTask } from "../../state/tasks/tasksSlice";
 
-
-export const Task: React.FC<TaskProps> = ({ tagsArray, descr, id, date }) => {
+export const Task: React.FC<TaskProps> = ({ tagsArray, descr, id, date, currentDay }) => {
     const dispatch = useAppDispatch()
     const [isEditing, setIsEditing] = useState(descr === '');
     const [currentDescr, setCurrentDescr] = useState(descr);
     const [currentTags, setCurrentTags] = useState(tagsArray);
-
 
     const handleTaskClick = () => {
         if (!isEditing) {
             setIsEditing(true);
         }
     };
-
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const value = event.target.value.trimStart();
         setCurrentDescr(value);
 
     };
-
     const handleBlur = () => {
-        if (currentDescr !== descr || currentTags !== tagsArray && date !== '') {
-            dispatch(updateTask({
-                id,
-                description: currentDescr,
-                tagsArray: currentTags,
-                date,
-            }));
-            setIsEditing(false);
-        }
-        if (date === "" && currentDescr !== "") {
-            dispatch(addTask({
-                id,
-                description: currentDescr,
-                tagsArray: currentTags,
-                date: new Date().toDateString()
-            }));
-            setIsEditing(false);
-        }
-        if (date === '' && currentDescr === '') {
-            return
-        }
-        else {
-            setIsEditing(false);
+        if (date !== "") {
+            if (currentDescr !== descr || currentTags !== tagsArray) {
+                dispatch(updateTask({
+                    id,
+                    description: currentDescr,
+                    tagsArray: currentTags,
+                    date,
+                }));
+            }
+            setIsEditing(false)
+        } else {
+            if (currentDescr !== "") {
+                dispatch(addTask({
+                    id,
+                    description: currentDescr,
+                    tagsArray: currentTags,
+                    date: currentDay.toDateString()
+                }));
+                setIsEditing(false)
+            } else {
+                return
+            }
+
         }
     };
     const handleTagClick = (t: keyof typeof tags) => {
@@ -61,34 +57,38 @@ export const Task: React.FC<TaskProps> = ({ tagsArray, descr, id, date }) => {
             setCurrentTags(a)
         }
     };
+    const handleDeleteClick = () => {
+        dispatch(removeTask(id));
+    }
 
     return (
         <TaskEl onClick={handleTaskClick} onMouseLeave={handleBlur}>
 
             {isEditing ? (
                 <>
-                    <div style={{ display: 'flex', justifyContent: 'start', gap: '1px', marginBottom: '4px' }}>
+                    <Wrapper>
                         {Object.keys(tags).map((t) =>
                             <Tag key={t}
                                 tag={t as keyof typeof tags}
                                 isActive={currentTags.includes(t as keyof typeof tags)}
                                 onClick={() => handleTagClick(t as keyof typeof tags)}
                             />)}
-                    </div>
+                    </Wrapper>
                     <InputTask id={`input-${id}`} value={currentDescr}
-                        onChange={handleChange}
-                        rows={4} />
+                        onChange={(e) => handleChange(e)}
+                        rows={3} />
+                    <DeleteBtn type="button" onClick={() => handleDeleteClick()}>Delete</DeleteBtn>
                 </>
             ) : (
                 <>
-                    <div style={{ display: 'flex', justifyContent: 'start', gap: '1px', marginBottom: '4px' }}>
+                    <Wrapper>
                         {tagsArray.map((t) => <Tag key={t} tag={t as keyof typeof tags} isActive={true} />)}
-                    </div>
-                    <span>{descr}</span>
+                    </Wrapper>
+                    <span style={{
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                    }}>{descr}</span>
                 </>
-            )
-            }
-
-
+            )}
         </TaskEl >)
 }

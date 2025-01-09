@@ -21,7 +21,7 @@ export const tasksSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action: PayloadAction<TaskType>) => {
-            state.items.push(action.payload);
+            state.items.unshift(action.payload);
         },
         removeTask: (state, action: PayloadAction<string>) => {
             state.items = state.items.filter(task => task.id !== action.payload);
@@ -41,7 +41,12 @@ export const tasksSlice = createSlice({
             })
             .addCase(fetchTasks.fulfilled, (state, action: PayloadAction<TaskType[]>) => {
                 state.status = 'fulfilled';
-                state.items = action.payload;
+                const uniqueTasks = state.items.filter(
+                    (existingTask) => !action.payload.some((newTask) => newTask.id === existingTask.id)
+                );
+
+                state.items = [...uniqueTasks, ...action.payload];
+
             })
             .addCase(fetchTasks.rejected, (state, action) => {
                 state.status = 'rejected';

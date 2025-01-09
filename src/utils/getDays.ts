@@ -15,4 +15,7 @@ export const getDays = (date: Date, length: number) => {
     return { days, firstDay, lastDay };
 };
 
+export const normalizeDate = (date: Date) => {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+};
 
