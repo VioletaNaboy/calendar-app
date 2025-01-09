@@ -2,7 +2,9 @@
 
 A calendar-based task management application built with React, Redux Toolkit, and custom hooks. This app focuses on a clean and intuitive user experience with powerful functionalities.
 
-![Calendar](assets/calendar-screenshot.png)
+[Live page](https://violetanaboy.github.io/calendar-app/)
+
+![Calendar](/src/assets/calendar-screenshot.png)
 
 ## Features
 
